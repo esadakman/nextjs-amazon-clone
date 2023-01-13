@@ -18,10 +18,9 @@ body {
 @layer components {
   .centeralizer {
     @apply flex justify-center items-center;
-  }
-  .button {
-    @apply px-4 py-2 border rounded-full cursor-pointer hover:shadow-lg active:scale-95
-    active:bg-gray-100 transition-all select-none;
+  } 
+  .link {
+    @apply cursor-pointer hover:underline transition-all
   }
 
 }
