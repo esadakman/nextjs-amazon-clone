@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html,
+body {
+  /* max-width: 100vw; */
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+@layer components {
+  .centeralizer {
+    @apply flex justify-center items-center;
+  }
+  .button {
+    @apply px-4 py-2 border rounded-full cursor-pointer hover:shadow-lg active:scale-95
+    active:bg-gray-100 transition-all select-none;
+  }
+
+}
