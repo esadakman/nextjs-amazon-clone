@@ -47,7 +47,7 @@ function Header() {
           </div>
         </div>
       </div>
-      {/* Bootom Nav */}
+      {/* Bottom Nav */}
       <div className="flex items-center space-x-3 p-2 bg-amazon_blue-light text-white ">
         <p className="link flex items-center">
           <Bars3Icon className="h-6 mr-1" />
