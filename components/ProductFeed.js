@@ -35,7 +35,7 @@ function ProductFeed({ products }) {
           />
         ))}
       </div>
-      {products.slice(5, products.length).map((product) => (
+      {products.slice(5, products.length - 1).map((product) => (
         <Product
           key={product.id}
           id={product.id}

@@ -1,8 +1,9 @@
 import "../styles/globals.css";
 import ProgressBar from "@badrap/bar-of-progress";
-import Router from "next/router"; 
+import Router from "next/router";
 import { store } from "../store";
 import { Provider } from "react-redux";
+import { Provider as AuthProvider } from "next-auth/client";
 
 export default function App({ Component, pageProps }) {
   const progress = new ProgressBar({
@@ -17,8 +18,10 @@ export default function App({ Component, pageProps }) {
   Router.events.on("routeChangeError", progress.finish);
 
   return (
-    <Provider store={store}>
-      <Component {...pageProps} />
-    </Provider>
+    <AuthProvider session={pageProps.session}>
+      <Provider store={store}>
+        <Component {...pageProps} />
+      </Provider>
+    </AuthProvider>
   );
 }

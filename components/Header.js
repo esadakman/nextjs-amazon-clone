@@ -4,7 +4,12 @@ import {
   ShoppingCartIcon,
   Bars3Icon,
 } from "@heroicons/react/24/outline";
+import { signIn, signOut, useSession } from "next-auth/client";
 function Header() {
+  const [session] = useSession();
+
+  console.log(session?.user?.name.split(" ").slice(0, 2).join(" "));
+
   return (
     <header>
       <div className="flex items-center bg-amazon_blue top-0 z-50  shadow-lg p-2 py-3 flex-grow">
@@ -28,8 +33,15 @@ function Header() {
         </div>
         {/* // ! Right */}
         <div className="text-white flex items-center text-xs space-x-6 mx-6 whitespace-nowrap ">
-          <div className="link ">
-            <p>Hello There</p>
+          <div className="link " onClick={!session ? signIn : signOut}>
+            <p>
+              {session
+                ? `Hello, ${session?.user.name
+                    .split(" ")
+                    .slice(0, 2)
+                    .join(" ")}`
+                : "Sign In"}
+            </p>
             <p className="font-extrabold md:text-sm">Account & Lists</p>
           </div>
           <div className="link ">
