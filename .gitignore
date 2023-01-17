@@ -27,6 +27,6 @@ yarn-error.log*
 
 # local env files
 .env*.local
-
+client_secret_891937068777.json
 # vercel
 .vercel

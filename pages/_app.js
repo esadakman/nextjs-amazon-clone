@@ -8,7 +8,7 @@ import { Provider as AuthProvider } from "next-auth/client";
 export default function App({ Component, pageProps }) {
   const progress = new ProgressBar({
     size: 4,
-    color: "#FE595E",
+    color: "#EAB308",
     className: "z-50",
     delay: 100,
   });
