@@ -26,8 +26,9 @@ function Product({ id, title, price, description, category, image }) {
       description,
       category,
       image,
+      rating,
+      hasPrime,
     };
-    
     // sending products infos to redux store
     dispatch(addToBasket(product));
   };
@@ -57,6 +58,7 @@ function Product({ id, title, price, description, category, image }) {
       {hasPrime ? (
         <div className=" flex items-center space-x-2 -mt-5">
           <img
+            loading="lazy"
             className="w-12"
             src="https://links.papareact.com/fdw"
             alt="prime"

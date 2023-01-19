@@ -3,12 +3,16 @@ import Header from "../components/Header";
 import { useSelector } from "react-redux";
 import { selectItems } from "../slices/basketSlice";
 import CheckoutProduct from "../components/CheckoutProduct";
+import Head from "next/head";
 
 function checkout() {
   const items = useSelector(selectItems);
-
+  // console.log(items);
   return (
     <div className="bg-gray-100">
+      <Head>
+        <title>Checkout Page</title>
+      </Head>
       <Header />
       <main className="lg:flex max-w-screen-2xl mx-auto">
         {/* Left */}
