@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Product from "./Product";
 
-function ProductFeed({ products }) { 
+function ProductFeed({ products }) {
   return (
     <div className="grid grid-flow-row-dense md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 lg:-mt-28 mx-auto  sm:mt-0 mt-12">
       {/* {products.slice(0,4)
@@ -15,6 +15,7 @@ function ProductFeed({ products }) {
           description={product.description}
           category={product.category}
           image={product.image}
+          priority={true}
         />
       ))}
       <img
@@ -32,6 +33,7 @@ function ProductFeed({ products }) {
             description={product.description}
             category={product.category}
             image={product.image}
+            priority={true}
           />
         ))}
       </div>
@@ -44,6 +46,7 @@ function ProductFeed({ products }) {
           description={product.description}
           category={product.category}
           image={product.image}
+          priority={true}
         />
       ))}
     </div>
