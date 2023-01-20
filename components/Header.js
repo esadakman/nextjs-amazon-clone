@@ -8,6 +8,7 @@ import { signIn, signOut, useSession } from "next-auth/client";
 import { useRouter } from "next/router";
 import { useSelector } from "react-redux";
 import { selectItems } from "../slices/basketSlice";
+import amazonLogo from '../public/amazon_logo.png';
 
 function Header() {
   const [session] = useSession();
@@ -20,7 +21,7 @@ function Header() {
         <div className="mt-2 flex items-center flex-grow sm:flex-grow-0">
           <Image
             onClick={() => router.push("/")}
-            src="https:links.papareact.com/f90"
+            src={amazonLogo}
             width={120}
             height={50}
             alt="amazon logo"
@@ -57,12 +58,12 @@ function Header() {
             onClick={() => router.push("/checkout")}
             className="relative link flex items-center"
           >
-            <span className="absolute top-0 -right-1 md:right-11 h-4 w-4 text-center text-amazon_blue font-bold bg-yellow-400 rounded-full">
+            <span className="absolute top-0 -right-1 md:right-6 h-4 w-4 text-center text-amazon_blue font-bold bg-yellow-400 rounded-full">
               {items?.length}
             </span>
             <ShoppingCartIcon className="h-10" />
-            <p className="hidden md:inline font-extrabold md:text-sm mt-2">
-              Basket
+            <p className="hidden md:inline font-extrabold md:text-sm mt-1">
+              Cart
             </p>
           </div>
         </div>

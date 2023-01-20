@@ -9,8 +9,10 @@ module.exports = {
   },
   nextConfig,
   env: {
-    GOOGLE_ID: process.env.GOOGLE_ID,
-    GOOGLE_SECRET: process.env.GOOGLE_SECRET,
+    // GOOGLE_ID: process.env.GOOGLE_ID,
+    // GOOGLE_SECRET: process.env.GOOGLE_SECRET,
+    STRIPE_PUBLIC_KEY:process.env.STRIPE_PUBLIC_KEY,
+    STRIPE_SECRET_KEY:process.env.STRIPE_SECRET_KEY,
     FIREBASE_API_KEY: process.env.FIREBASE_API_KEY,
     FIREBASE_AUTH_DOMAIN: process.env.FIREBASE_AUTH_DOMAIN,
     FIREBASE_PROJECT_ID: process.env.FIREBASE_PROJECT_ID,
