@@ -15,6 +15,7 @@
     "@reduxjs/toolkit": "^1.9.1",
     "@stripe/stripe-js": "^1.46.0",
     "@tailwindcss/line-clamp": "^0.4.2",
+    "axios": "^1.2.3",
     "date-fns": "^2.29.3",
     "firebase": "^9.15.0",
     "firebase-admin": "^11.4.1",
