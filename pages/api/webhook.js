@@ -3,8 +3,7 @@ import * as admin from "firebase-admin";
 
 // Secure a connection to Firebase from the backend.
 // authenticate the admin. this is backend stuff, the other firebase.js
-// was for frontend work
-// this could also be an import:
+// was for frontend work this could also be an import:
 
 const serviceAccount = require("../../firebasePermissions.json");
 
@@ -14,9 +13,9 @@ const app = !admin.apps.length
     })
   : admin.app();
 
-  console.log(JSON.parse(session));
+  // console.log(JSON.parse(session));
 // Establish a connection to Stripe.
-const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
+const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 const endpointSecret = process.env.STRIPE_SIGNING_SECRET;
 
 const fulfillOrder = async (session) => {
@@ -42,13 +41,13 @@ export default async (req, res) => {
   if (req.method === "POST") {
     const requestBuffer = await buffer(req);
     const payload = requestBuffer.toString();
-    const secret = req.headers["stripe-signature"];
+    const sig = req.headers["stripe-signature"];
 
     let event;
 
     // Verify that the event came from Stripe
     try {
-      event = stripe.webhooks.constructEvent(payload, secret, endpointSecret);
+      event = stripe.webhooks.constructEvent(payload, sig, endpointSecret);
     } catch (err) {
       console.log(`❌ Error message: ${err.message}`);
       return res.status(400).send(`Webhook Error: ${err.message}`);
