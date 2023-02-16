@@ -1,12 +1,11 @@
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 
 export default async (req, res) => {
-  const { items, email } = req.body;
-
+  const { items, email } = req.body; 
   const transformedItems = items.map((item) => ({
     quantity: 1,
     price_data: {
-    //   description: item.description,
+      //   description: item.description,
       currency: "usd",
       unit_amount: item.price * 100,
       product_data: {
@@ -20,7 +19,7 @@ export default async (req, res) => {
     //payment_method_types: ["card"],
     // shipping_rates: ["shr_1MSbfsD6VpnYfBpliRxvvEQB"],
     shipping_address_collection: {
-     allowed_countries: ["GB", "US", "CA","TR"],
+      allowed_countries: ["GB", "US", "CA", "TR"],
     },
     line_items: transformedItems,
     mode: "payment",
@@ -34,7 +33,6 @@ export default async (req, res) => {
 
   res.status(200).json({ id: session.id });
 };
-
 
 // export default async (req, res) => {
 //   const { items, email } = req.body;

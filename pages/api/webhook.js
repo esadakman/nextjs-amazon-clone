@@ -6,7 +6,7 @@ import * as admin from "firebase-admin";
 // was for frontend work
 // this could also be an import:
 
-const serviceAccount = require("../../../firebasePermissions.json");
+const serviceAccount = require("../../firebasePermissions.json");
 
 const app = !admin.apps.length
   ? admin.initializeApp({
