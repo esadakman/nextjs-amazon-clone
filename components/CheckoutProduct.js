@@ -3,7 +3,7 @@ import Image from "next/image";
 import React from "react";
 import Currency from "react-currency-formatter";
 import { useDispatch } from "react-redux";
-import { removeFromBasket } from "../slices/basketSlice";
+import { addToBasket, removeFromBasket } from "../slices/basketSlice";
 
 function CheckoutProduct({
   id,
@@ -31,7 +31,6 @@ function CheckoutProduct({
   };
   const removeItemFromBasket = () => {
     dispatch(removeFromBasket({ id }));
-
   };
   return (
     <div className="grid grid-cols-5">

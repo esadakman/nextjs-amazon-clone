@@ -13,7 +13,7 @@ import amazonLogo from "../public/amazon_logo.png";
 function Header() {
   const [session] = useSession();
   const router = useRouter();
-  // console.log(session?.user?.name.split(" ").slice(0, 2).join(" "));
+  // console.log(session);
   const items = useSelector(selectItems);
   return (
     <header className="fixed w-screen top-0 z-50 ">
