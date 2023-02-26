@@ -1,21 +1,16 @@
-// import firebase from 'firebase/compat/app';
-// import 'firebase/compat/auth';
-// import 'firebase/compat/firestore';
-import firebase from "firebase";
+// import firebase from "firebase/compat/app";
+import { initializeApp, getApps } from "firebase/app";
+import { collection, getDocs, getFirestore } from "firebase/firestore";
 
 const firebaseConfig = {
-  apiKey: process.env.GOOGLE_ID,
-  authDomain: process.env.GOOGLE_SECRET,
-  projectId: process.env.FIREBASE_API_KEY,
+  apiKey: process.env.FIREBASE_API_KEY,
+  authDomain: process.env.FIREBASE_AUTH_DOMAIN,
+  projectId: process.env.FIREBASE_PROJECT_ID,
   storageBucket: process.env.FIREBASE_STORAGE_BUCKET,
   messagingSenderId: process.env.FIREBASE_MESSAGING_SENDER_ID,
   appId: process.env.FIREBASE_APP_ID,
-}; 
-
-const app = !firebase.apps.length
-  ? firebase.initializeApp(firebaseConfig)
-  : firebase.app(); 
-
-const db = app.firestore();
+};
+const app = !getApps.length ? initializeApp(firebaseConfig) : getApps();
+const db = getFirestore(app);
 
 export default db;
