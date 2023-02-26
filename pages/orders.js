@@ -4,6 +4,7 @@ import { getSession, useSession } from "next-auth/client";
 import moment from "moment";
 import db from "../firebase";
 import { doc, getDocs, collection } from "firebase/firestore";
+import Order from "../components/Order";
 function Orders({ orders }) {
   // const { data: session } = useSession();
   const [session] = useSession();
@@ -11,7 +12,7 @@ function Orders({ orders }) {
   return (
     <>
       <Header />
-      <div className="bg-gray-100 h-screen mt-28">
+      <div className="bg-gray-100 min-h-screen mt-28">
         <Head>
           <title>Orders</title>
         </Head>
@@ -28,7 +29,7 @@ function Orders({ orders }) {
           <h2>{orders?.length} Orders</h2>
 
           <div className="mt-5 space-y-4">
-            {/* {orders?.map(
+            {orders?.map(
               ({ id, amount, amountShipping, items, timestamp, images }) => (
                 <Order
                   key={id}
@@ -40,7 +41,7 @@ function Orders({ orders }) {
                   images={images}
                 />
               )
-            )} */}
+            )}
           </div>
         </main>
       </div>
@@ -83,37 +84,3 @@ export async function getServerSideProps(context) {
     },
   };
 }
-
-// Firebase db
-// const docRef = doc(db, "users", session.user.email, );
-// const stripeOrders = await getDoc(docRef);
-// console.log(docSnap);
-// const stripeOrders = await db
-//   .collection("users")
-//   .doc(session.user.email)
-//   .collection("orders")
-//   .orderBy("timestamp", "desc")
-//   .get();
-
-// const colRef = collection(db, "users");
-// const docsSnap = await getDocs(colRef);
-// Stripe orders
-// const orders = await Promise.all(
-//   // map through each order and get the data
-//   // each one would be a promise. so Promise.all will wait
-//   //for all of them to resolve
-//   stripeOrders.docs.map(async (order) => ({
-//     id: order.id,
-//     amount: order.data().amount, // / 100,
-//     //amountShipping: order.data().amount_shipping / 100,
-//     images: order.data().images,
-//     // get the timestamp from firebase and convert it to a date object
-//     // so we can format it
-//     timestamp: moment(order.data().timestamp.toDate()).unix(),
-//     items: (
-//       await stripe.checkout.sessions.listLineItems(order.id, {
-//         limit: 100,
-//       })
-//     ).data,
-//   }))
-// );

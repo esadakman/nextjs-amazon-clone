@@ -8,13 +8,13 @@ import { signIn, signOut, useSession } from "next-auth/client";
 import { useRouter } from "next/router";
 import { useSelector } from "react-redux";
 import { selectItems } from "../slices/basketSlice";
-import amazonLogo from '../public/amazon_logo.png';
+import amazonLogo from "../public/amazon_logo.png";
 
 function Header() {
   const [session] = useSession();
   const router = useRouter();
   // console.log(session?.user?.name.split(" ").slice(0, 2).join(" "));
-  const items = useSelector(selectItems); 
+  const items = useSelector(selectItems);
   return (
     <header className="fixed w-screen top-0 z-50 ">
       <div className="flex items-center bg-amazon_blue top-0 z-50  shadow-lg p-2 py-3 flex-grow">
@@ -50,7 +50,7 @@ function Header() {
             </p>
             <p className="font-extrabold md:text-sm">Account & Lists</p>
           </div>
-          <div className="link ">
+          <div onClick={() => router.push("/orders")} className="link ">
             <p>Returns</p>
             <p className="font-extrabold md:text-sm">& Orders</p>
           </div>
