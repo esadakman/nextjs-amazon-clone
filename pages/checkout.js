@@ -9,7 +9,7 @@ import { useSession } from "next-auth/client";
 import banner from "../public/prime_banner.jpg";
 import { loadStripe } from "@stripe/stripe-js";
 import axios from "axios";
-const stripePromise = loadStripe(process.env.STRIPE_PUBLIC_KEY);
+const stripePromise = loadStripe(`${process.env.STRIPE_PUBLIC_KEY}`);
 
 
 function Checkout() { 
