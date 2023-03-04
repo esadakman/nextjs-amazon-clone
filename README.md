@@ -1,5 +1,18 @@
 # NextJS - Amazon Clone
+
 <!-- stripe listen --forward-to localhost:3000/api/webhook -->
+
+<!-- // GOOGLE_ID: process.env.GOOGLE_ID,
+// GOOGLE_SECRET: process.env.GOOGLE_SECRET,
+// STRIPE_SECRET_KEY:process.env.STRIPE_SECRET_KEY,
+// STRIPE_SIGNING_SECRET:process.env.STRIPE_SIGNING_SECRET,
+// FIREBASE_API_KEY: process.env.FIREBASE_API_KEY,
+// FIREBASE_AUTH_DOMAIN: process.env.FIREBASE_AUTH_DOMAIN,
+// FIREBASE_PROJECT_ID: process.env.FIREBASE_PROJECT_ID,
+// FIREBASE_STORAGE_BUCKET: process.env.FIREBASE_STORAGE_BUCKET,
+// FIREBASE_MESSAGING_SENDER_ID: process.env.FIREBASE_MESSAGING_SENDER_ID,
+// FIREBASE_APP_ID: process.env.FIREBASE_APP_ID, -->
+
 ## Objective
 
 - Project aims to create a Airbnb clone with using NextJS.
@@ -26,14 +39,14 @@ SOLUTION
 │    ├── CheckoutProduct.jsx
 │    ├── Header.jsx
 │    ├── Order.jsx
-│    ├── Product.jsx 
+│    ├── Product.jsx
 │    └── ProductFeed.js
 ├── pages
 │    ├── api
-│    │    ├─── auth 
+│    │    ├─── auth
 │    │    │      └── [...nextauth].js
-│    │    ├─── create-checkout-session.js 
-│    │    └─── webhook.js  
+│    │    ├─── create-checkout-session.js
+│    │    └─── webhook.js
 │    ├── _app.js
 │    ├── _document.js
 │    ├── checkout.js
@@ -82,9 +95,29 @@ SOLUTION
 
 To run this project;
 
-- Signup https://stripe.com/ and create new account.  
-- Copy your public token from your account page.
-- Create a .env.local file and set your MAPBOX_KEY for maps and locations:
+- URL's
+  - Specify your NEXTAUTH_URL and HOST url in .env.local
+- Stripe Keys
+  - Signup https://stripe.com/ and create new account.
+  - Copy your STRIPE_PUBLIC_KEY and STRIPE_SECRET_KEY.
+  - For STRIPE_SIGNING_SECRET from developers page, create webhook and copy your secret key
+- Firebase Keys:
+  - Go to https://console.firebase.google.com/ and create new web app.
+  - From your firebaseConfig copy:
+  ```js
+  FIREBASE_API_KEY,
+  FIREBASE_AUTH_DOMAIN,
+  FIREBASE_DATABASE_URL
+  FIREBASE_PROJECT_ID,
+  FIREBASE_STORAGE_BUCKET,
+  FIREBASE_MESSAGING_SENDER_ID,
+  ```
+  - Go to `https://console.cloud.google.com/apis/credentials` page and from OAuth 2.0 Client IDs add your projects links to `Authorized JavaScript origins` and `Authorized redirect URIs`
+- For Firebase admin
+  - Go to your firebase/console and create new firebase database and generate your new private key, rename your file to `firebasePermissions` and move to your project file
+- And finally for webhook:
+  - From `https://stripe.com/docs/stripe-cli` page download Stripe CLI and move to project folder.
+  - Open new terminal for webhook, run `stripe listen --forward-to localhost:3000/api/webhook`  and copy your signing secret from terminal and create your `STRIPE_SIGNING_SECRET`.
 
 After these you can run the project as usual =>
 
@@ -99,4 +132,4 @@ Open http://localhost:3000 with your browser to see the result.
 
 ### Preview of the Project
 
- <!-- <img src="./airbnb-clone.gif" alt="gif"   /> -->
+ <img src="./amazon-clone.gif" alt="gif"   />

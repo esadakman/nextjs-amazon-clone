@@ -9,10 +9,10 @@ import { useSession } from "next-auth/client";
 import banner from "../public/prime_banner.jpg";
 import { loadStripe } from "@stripe/stripe-js";
 import axios from "axios";
-const stripePromise = loadStripe(`${process.env.STRIPE_PUBLIC_KEY}`);
 
-
-function Checkout() { 
+function Checkout() {
+  const stripePromise = loadStripe(`${process.env.STRIPE_PUBLIC_KEY}`);
+  console.log(typeof loadStripe)
   const items = useSelector(selectItems);
   const total = useSelector(selectTotal);
   const [session] = useSession();
@@ -21,7 +21,7 @@ function Checkout() {
     const stripe = await stripePromise;
     // call the backend to create a checkout session...
     const checkoutSession = await axios.post("/api/create-checkout-session", {
-      items: items,
+      items,
       email: session.user.email,
     });
 
@@ -72,27 +72,38 @@ function Checkout() {
           </div>
         </div>
         {/* Right */}
-        <div className="flex flex-col bg-white p-10 shadow-md min-w-fit">
-          {/* {items.length > 0 && ( */}
-          <>
-            <h2>
-              Subtotal ({items.length} items):
-              <span className="font-bold">
-                <Currency quantity={total} />
-              </span>
-            </h2>
-            <button
-              role="link"
-              onClick={createCheckoutSession}
-              className={`button  mt-2 rounded-lg ${
-                !session &&
-                "from-gray-300 to-gray-500 border-gray-200 text-gray-300 cursor-not-allowed"
-              }`}
-            >
-              {!session ? "Sign in to checkout" : "Proceed to checkout"}
-            </button>
-          </>
-          {/* )} */}
+        <div className="flex flex-col bg-white p-10 shadow-md min-w-[400px]">
+          {items.length > 0 && (
+            <div className="flex flex-col bg-white p-10 shadow-md">
+              <h2 className="whitespace-nowrap">
+                Subtotal ({items.length} items):{" "}
+                <span className="font-bold">
+                  <Currency quantity={total} currency="GBP" />
+                </span>
+              </h2>
+              <button
+                // role="link" for stripe!
+                role="link"
+                onClick={() =>
+                  session &&
+                  !session.activeSubscription &&
+                  createCheckoutSession()
+                }
+                disabled={!session}
+                className={`button mt-2 ${
+                  !session &&
+                  "from-gray-300 to-gray-500 border-gray-200 text-gray-300 cursor-not-allowed"
+                }`}
+              >
+                {!session ? "Sign in to checkout" : "Proceed to checkout"}
+              </button>
+
+              <p className="text-xs mt-2">
+                By clicking "Proceed to checkout", you agree to Amazon's
+                Conditions of Use and Privacy Notice.
+              </p>
+            </div>
+          )}
         </div>
       </main>
     </div>
