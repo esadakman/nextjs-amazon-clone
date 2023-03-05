@@ -11,8 +11,7 @@ import { loadStripe } from "@stripe/stripe-js";
 import axios from "axios";
 
 function Checkout() {
-  const stripePromise = loadStripe(`${process.env.STRIPE_PUBLIC_KEY}`);
-  console.log(typeof loadStripe)
+  const stripePromise = loadStripe(process.env.STRIPE_PUBLIC_KEY); 
   const items = useSelector(selectItems);
   const total = useSelector(selectTotal);
   const [session] = useSession();
