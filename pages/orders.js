@@ -8,6 +8,8 @@ import Order from "../components/Order";
 function Orders({ orders }) { 
   const [session] = useSession();
   // console.log(orders);
+  console.log(process.env.STRIPE_SECRET_KEY);
+
   return (
     <>
       <Header />
@@ -54,6 +56,7 @@ export async function getServerSideProps(context) {
   const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
   // Get the user logged in credentials/clearance
   // it is a promise, so we need to await it
+
   const session = await getSession(context);
   if (!session) {
     return {
