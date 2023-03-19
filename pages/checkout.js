@@ -15,8 +15,7 @@ const stripePromise = loadStripe(process.env.STRIPE_PUBLIC_KEY.toString());
 function Checkout() {
   const items = useSelector(selectItems);
   const total = useSelector(selectTotal);
-  const [session] = useSession();
-  console.log(stripePromise);
+  const [session] = useSession(); 
   const createCheckoutSession = async () => {
     const stripe = await stripePromise;
     // call the backend to create a checkout session...

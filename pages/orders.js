@@ -5,10 +5,9 @@ import moment from "moment";
 import db from "../firebase";
 import { doc, getDocs, collection } from "firebase/firestore";
 import Order from "../components/Order";
-function Orders({ orders }) { 
+function Orders({ orders }) {
   const [session] = useSession();
   // console.log(orders);
-  console.log(process.env.STRIPE_SECRET_KEY);
 
   return (
     <>
