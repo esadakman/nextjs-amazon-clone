@@ -9,8 +9,9 @@ import { useSession } from "next-auth/client";
 import banner from "../public/prime_banner.jpg";
 import { loadStripe } from "@stripe/stripe-js";
 import axios from "axios";
+console.log(typeof (process.env.STRIPE_PUBLIC_KEY))
+const stripePromise = loadStripe(String(process.env.STRIPE_PUBLIC_KEY));
 // const stripePromise = loadStripe(process.env.STRIPE_PUBLIC_KEY.toString());
-const stripePromise = loadStripe(process.env.STRIPE_PUBLIC_KEY.toString());
 
 function Checkout() {
   const items = useSelector(selectItems);
