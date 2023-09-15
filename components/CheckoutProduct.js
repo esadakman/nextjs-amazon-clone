@@ -61,7 +61,7 @@ function CheckoutProduct({
             <img
               loading="lazy"
               className="w-12"
-              src="https://links.papareact.com/fdw"
+              src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bb/Prime_logo.png/800px-Prime_logo.png?20180219133124"
               alt="prime"
             />
             <p className="text-xs text-gray-500">FREE Next-day Delivery</p>
